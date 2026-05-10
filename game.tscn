@@ -2,12 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://ujpmsxpmlhg1" path="res://PLAYER.tscn" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://bq2w6ha0cdgdr" path="res://icon.svg" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://btra17ta8qrsn" path="res://2764470_712d4.png" id="3_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dw1dn1abx78yc" path="res://health_component.tscn" id="4_7jktm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(31.465363, 51.89698)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(63, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryrav"]
+size = Vector2(83, 239)
 
 [node name="game" type="Node2D" unique_id=773482487]
 
@@ -85,6 +90,7 @@ scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_feb5d")
 
 [node name="tree" type="StaticBody2D" parent="." unique_id=520381558]
+position = Vector2(-115, -38)
 
 [node name="Sprite2D" type="Sprite2D" parent="tree" unique_id=410647129]
 scale = Vector2(0.6, 1.64)
@@ -115,3 +121,17 @@ texture = ExtResource("2_e2o6t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tree3" unique_id=1891038710]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="dummy" type="StaticBody2D" parent="." unique_id=629752866]
+position = Vector2(517, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="dummy" unique_id=1800001541]
+scale = Vector2(0.31563407, 0.48848325)
+texture = ExtResource("3_fc0e3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dummy" unique_id=501667562]
+position = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_ryrav")
+
+[node name="Health_Component" parent="dummy" unique_id=1721055479 instance=ExtResource("4_7jktm")]
+max_health = 1000.0
