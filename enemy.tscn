@@ -1,17 +1,52 @@
 [gd_scene format=3 uid="uid://f2lqofejhwy6"]
 
 [ext_resource type="Script" uid="uid://cwhbn0bukcqbw" path="res://enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://btra17ta8qrsn" path="res://2764470_712d4.png" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://datoso7vqse4f" path="res://Environment Textures/Meteor-Asteroid Sprites/Texture_Enemy_Asteroid_Standard 1.png" id="2_3yqyl"]
+[ext_resource type="Texture2D" uid="uid://bhmja15si3wlg" path="res://Environment Textures/Meteor-Asteroid Sprites/Texture_Enemy_Asteroid_Standard 2.png" id="3_wujgv"]
+[ext_resource type="Texture2D" uid="uid://83ogrhhbnjep" path="res://Environment Textures/Meteor-Asteroid Sprites/Texture_Enemy_Asteroid_Standard 3.png" id="4_hb8ge"]
+[ext_resource type="Texture2D" uid="uid://b4e3oocedt0na" path="res://Environment Textures/Meteor-Asteroid Sprites/Texture_Enemy_Asteroid_Standard 4.png" id="5_e1ltt"]
+[ext_resource type="Texture2D" uid="uid://depn55vi1f6od" path="res://Environment Textures/Meteor-Asteroid Sprites/Texture_Enemy_Asteroid_Standard 5.png" id="6_dxifv"]
+[ext_resource type="PackedScene" uid="uid://dw1dn1abx78yc" path="res://health_component.tscn" id="7_wujgv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwjut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3yqyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wujgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hb8ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e1ltt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dxifv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 16.124516
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2111441890]
 script = ExtResource("1_4gyqm")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=941159411]
+position = Vector2(9.499996, -6.5)
+rotation = 4.712389
+scale = Vector2(0.40192926, 0.40999997)
+sprite_frames = SubResource("SpriteFrames_pwjut")
+autoplay = "default"
+frame_progress = 0.68908936
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1224414593]
+position = Vector2(17, -4)
 shape = SubResource("CircleShape2D_4gyqm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1855196529]
-position = Vector2(9.499996, -6.5)
-scale = Vector2(0.40192926, 0.40999997)
-texture = ExtResource("1_7k104")
+[node name="Health_Component" parent="." unique_id=1721055479 instance=ExtResource("7_wujgv")]

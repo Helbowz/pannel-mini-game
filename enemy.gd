@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var damage = 1
 
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 
 func _physics_process(_delta):
 	if player:
@@ -12,5 +12,7 @@ func _physics_process(_delta):
 		velocity = direction * speed
 		move_and_slide()
 		
-		if direction.x != 0:
-			sprite.flip_h = direction.x < 0
+	# 2. Rotation logic
+	if velocity.length() > 0:
+		# .angle() returns the angle of the movement vector
+		rotation = velocity.angle()
