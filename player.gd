@@ -19,3 +19,9 @@ func _physics_process(delta):
 		
 	#tell it to move
 	move_and_slide()
+	
+
+
+
+func _on_health_component_died():
+	queue_free()

@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://btra17ta8qrsn" path="res://2764470_712d4.png" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://kn72hcw70ey7" path="res://dummy.gd" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://dw1dn1abx78yc" path="res://health_component.tscn" id="4_7jktm"]
-[ext_resource type="PackedScene" uid="uid://cxfpsaj8c6vho" path="res://enemy_spawner.tscn" id="5_7jktm"]
-[ext_resource type="PackedScene" uid="uid://f2lqofejhwy6" path="res://enemy.tscn" id="6_ryrav"]
 [ext_resource type="Script" uid="uid://ewh2e3w44wta" path="res://hurtbox.gd" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://f2lqofejhwy6" path="res://enemy.tscn" id="6_ryrav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(31.465363, 51.89698)
@@ -144,9 +143,6 @@ shape = SubResource("RectangleShape2D_ryrav")
 [node name="Health_Component" parent="dummy" unique_id=1721055479 instance=ExtResource("4_7jktm")]
 max_health = 1000.0
 
-[node name="EnemySpawner" parent="." unique_id=1921670933 instance=ExtResource("5_7jktm")]
-position = Vector2(338, 317)
-enemy_prefab = ExtResource("6_ryrav")
 [node name="HurtBox" type="Area2D" parent="dummy" unique_id=1346754717]
 collision_layer = 0
 script = ExtResource("5_7jktm")
@@ -155,5 +151,9 @@ metadata/_custom_type_script = "uid://ewh2e3w44wta"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dummy/HurtBox" unique_id=1843236645]
 position = Vector2(1, 156)
 shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="EnemySpawner" parent="." unique_id=1921670933]
+position = Vector2(338, 317)
+enemy_prefab = ExtResource("6_ryrav")
 
 [connection signal="died" from="dummy/Health_Component" to="dummy" method="_on_health_component_died"]

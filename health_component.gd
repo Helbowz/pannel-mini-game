@@ -8,7 +8,7 @@ signal damaged(amount)
 signal healed(amount)
 
 # Export stuff to sidebar for easy editing w/o messing w/ script
-@export var max_health: float = 100.0
+@export var max_health: float = 1.0
 var health: float
 
 func _ready():
@@ -24,6 +24,8 @@ func take_damage(amount: float):
 	
 	damaged.emit(amount)
 	health_changed.emit(health)
+	
+	print("You took damage!")
 	
 	if health <= 0:
 		died.emit()
