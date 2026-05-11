@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://dgb71tp3aebtw" path="res://player.gd" id="1_x3g1t"]
 [ext_resource type="Texture2D" uid="uid://bq2w6ha0cdgdr" path="res://icon.svg" id="2_dwsyw"]
 [ext_resource type="PackedScene" uid="uid://dw1dn1abx78yc" path="res://health_component.tscn" id="3_dwsyw"]
+[ext_resource type="Script" uid="uid://b7o75l2m7hvu3" path="res://hitbox.gd" id="4_gk14i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk14i"]
 size = Vector2(116, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0285v"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=270135573]
 script = ExtResource("1_x3g1t")
@@ -15,8 +18,15 @@ position = Vector2(-1, 0)
 texture = ExtResource("2_dwsyw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=369330015]
-position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_gk14i")
 debug_color = Color(0.65600365, 0.5171723, 3.85046e-07, 0.41960785)
 
 [node name="Health_Component" parent="." unique_id=1721055479 instance=ExtResource("3_dwsyw")]
+
+[node name="HitBox" type="Area2D" parent="." unique_id=850934699]
+collision_mask = 0
+script = ExtResource("4_gk14i")
+metadata/_custom_type_script = "uid://b7o75l2m7hvu3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1045607821]
+shape = SubResource("RectangleShape2D_0285v")
